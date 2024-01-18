@@ -37,4 +37,14 @@ const StyledHeader = styled.header`
     justify-content: center;
     align-items: center;
   }
+
+  img {
+    margin-right: 0%.5rem;
+  }
+  div {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-bottom: 1rem;
+  }
 `;
