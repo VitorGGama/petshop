@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import styled from "styled-components"; // Adiciona esta linha para importar o styled-components
+import styled from "styled-components";
 import Menu from "./Menu";
 
 export default function Cabecalho() {
@@ -36,6 +36,7 @@ const StyledHeader = styled.header`
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--cor-secundaria-hover);
   }
 
   img {
