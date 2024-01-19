@@ -10,6 +10,30 @@ export default function Sobre() {
       </Head>
       <StyledSobre>
         <h2>Sobre nosso PetShop</h2>
+
+        <h3>Missão</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
+          sequi voluptate dolore, saepe culpa vitae exercitationem non, pariatur
+          iusto perferendis sunt quaerat eum dolorum vel tempora mollitia eius
+          aliquid ipsam.
+        </p>
+
+        <h3>Visão</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
+          sequi voluptate dolore, saepe culpa vitae exercitationem non, pariatur
+          iusto perferendis sunt quaerat eum dolorum vel tempora mollitia eius
+          aliquid ipsam.
+        </p>
+
+        <h3>Valores</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
+          sequi voluptate dolore, saepe culpa vitae exercitationem non, pariatur
+          iusto perferendis sunt quaerat eum dolorum vel tempora mollitia eius
+          aliquid ipsam.
+        </p>
       </StyledSobre>
     </>
   );
