@@ -64,7 +64,7 @@ const StyledContato = styled.section`
     textarea {
       width: 100%;
       padding: 8px;
-      border: 1px solid #ccc;
+      border: 1px solid #522828;
       border-radius: 4px;
       box-sizing: border-box;
     }
@@ -75,7 +75,7 @@ const StyledContato = styled.section`
   }
 
   button {
-    background-color: #4caf50;
+    background-color: #676572;
     color: white;
     padding: 10px 15px;
     border: none;
