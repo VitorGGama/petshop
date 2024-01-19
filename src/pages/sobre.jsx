@@ -37,15 +37,15 @@ export default function Sobre() {
 
           <h3>Valores</h3>
           <p>
-            Amor pelos Animais: Tratamos cada pet como parte da nossa família.
-            Ética e Transparência: Mantemos padrões éticos elevados em todas as
-            operações. Comprometimento com a Qualidade: Oferecemos produtos e
-            serviços de excelência. Atendimento Personalizado: Valorizamos o
-            relacionamento próximo com os clientes. Responsabilidade Ambiental:
-            Adotamos práticas sustentáveis e responsáveis. Inovação Constante:
-            Buscamos constantemente inovações para atender às expectativas do
-            mercado. Equipe Apaixonada: Nossa equipe é unida pela paixão pelos
-            animais e dedicação aos clientes.
+            - Amor pelos Animais: Tratamos cada pet como parte da nossa família.
+            - Ética e Transparência: Mantemos padrões éticos elevados em todas
+            as operações. - Comprometimento com a Qualidade: Oferecemos produtos
+            e serviços de excelência. - Atendimento Personalizado: Valorizamos o
+            relacionamento próximo com os clientes. - Responsabilidade
+            Ambiental: Adotamos práticas sustentáveis e responsáveis. - Inovação
+            Constante: Buscamos constantemente inovações para atender às
+            expectativas do mercado. - Equipe Apaixonada: Nossa equipe é unida
+            pela paixão pelos animais e dedicação aos clientes.
           </p>
         </Container>
       </StyledSobre>
