@@ -1,52 +1,32 @@
 import Head from "next/head";
 import Link from "next/link";
 import styled from "styled-components";
+import arrayPosts from "./api/array-posts";
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>PetShop 2024</title>
+        <title>PetShop</title>
         <meta
           name="description"
-          contente="Au au au! Melhor PetShop da região"
+          content="Web App PetShop criado com Next.js como exemplo do curso Téc. Informática para Internet"
         />
-        <meta
-          name="Keywords"
-          content="Ração, brinquedos, banho, coleira, Gato, Cachorro, petshop"
-        />
-        {/* meta name="Keywords" é tipo uma # para encontrar o site */}
+        <meta name="keywords" content="PetShop, Banho, Ração, Gato, Cachorro" />
       </Head>
-      {/* //Antes era <section> mudamos por causa do css */}
       <StyledHome>
         <h2>Pet Notícias</h2>
         <StyledListaPosts>
-          <article>
-            <Link href="">
-              <h3>Título do post...</h3>
-              <p>Subtítulo do post</p>
-            </Link>
-          </article>
-
-          <article>
-            <Link href="">
-              <h3>Título do post...</h3>
-              <p>Subtítulo do post</p>
-            </Link>
-          </article>
-          <article>
-            <Link href="">
-              <h3>Título do post...</h3>
-              <p>Subtítulo do post</p>
-            </Link>
-          </article>
-
-          <article>
-            <Link href="">
-              <h3>Título do post...</h3>
-              <p>Subtítulo do post</p>
-            </Link>
-          </article>
+          {arrayPosts.map((post) => {
+            return (
+              <article key={post.id}>
+                <Link href="">
+                  <h3> {post.titulo} </h3>
+                  <p> {post.subtitulo} </p>
+                </Link>
+              </article>
+            );
+          })}
         </StyledListaPosts>
       </StyledHome>
     </>
@@ -68,7 +48,7 @@ const StyledListaPosts = styled.div`
 
       &:hover,
       &:focus {
-        color: blue;
+        color: #0066ff;
       }
     }
   }
@@ -82,15 +62,15 @@ const StyledListaPosts = styled.div`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-  }
 
-  article {
-    width: 49%;
+    article {
+      width: 49%;
+    }
   }
 `;
 
 const StyledHome = styled.section`
   h2::before {
-    content: "📰";
+    content: "📰 ";
   }
 `;
