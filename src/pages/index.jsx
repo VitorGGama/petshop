@@ -1,32 +1,29 @@
 import Head from "next/head";
 import styled from "styled-components";
 import ListaPosts from "@/components/ListaPosts";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export default function Home() {
-  const [listaDePost, setListaDePost] = useState([]);
+/* EXECUTADA NO SERVIDOR/BACK-END */
+export async function getStaticProps() {
+  try {
+    const resposta = await fetch(`http://10.20.46.24:2112/posts`);
+    const dados = await resposta.json();
 
-  useEffect(() => {
-    const carregarDados = async () => {
-      try {
-        const resposta = await fetch("http://10.20.46.24:2112/posts");
+    if (!resposta.ok)
+      throw new Error(`Erro: ${resposta.status} - ${resposta.statusText}`);
 
-        if (!resposta.ok) {
-          throw new Error(
-            `Erro na requisição: ${resposta.status} - ${resposta.statusText}`
-          );
-        }
-
-        const dados = await resposta.json();
-        setListaDePost(dados);
-      } catch (error) {
-        console.error("Ocorreu um erro ao carregar os dados:", error);
-        // Lide com o erro de alguma forma, por exemplo, definindo um estado de erro.
-      }
+    return {
+      props: {
+        posts: dados,
+      },
     };
+  } catch (error) {
+    console.error("Deu ruim: " + error.message);
+  }
+}
 
-    carregarDados();
-  }, []);
+export default function Home({ posts }) {
+  const [listaDePost, setListaDePost] = useState(posts);
 
   return (
     <>
