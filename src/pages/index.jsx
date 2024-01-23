@@ -2,6 +2,7 @@ import Head from "next/head";
 import styled from "styled-components";
 import ListaPosts from "@/components/ListaPosts";
 import { useState, version } from "react";
+import serverApi from "./api/server";
 
 /* EXECUTADA NO SERVIDOR/BACK-END 
 Utilizada para execução de código server-side (neste caso, fetch na API)
@@ -9,7 +10,7 @@ com o objeto de gerar props com os dados processados.*/
 export async function getStaticProps() {
   console.log("Código de servidor (não aparece no cliente)...");
   try {
-    const resposta = await fetch(`http://10.20.46.24:2112/posts`);
+    const resposta = await fetch(`${serverApi}/posts`);
     const dados = await resposta.json();
 
     if (!resposta.ok)
