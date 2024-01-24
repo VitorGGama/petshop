@@ -61,7 +61,14 @@
       "titulo": "lalinha, a gata da vida boa!",
       "subtitulo": "Vocês conhecem a Lalinha?",
       "descricao": "Come, dorme, e mia o dia inteiro",
-      "categoria": "ELa come ração, bebe água, e a noite ainda na ceia tem o seu sache"
+      "categoria": "comportamento"
+    },
+    {
+      "id": 10,
+      "titulo": "Phelipe precisa tomar um coudo",
+      "subtitulo": "Senão vai ser reprovado",
+      "descricao": "Tá jogando muito joguinho",
+      "categoria": "Reprovados"
     }
   ]
 }

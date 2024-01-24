@@ -32,10 +32,19 @@ export async function getStaticProps({ params }) {
     };
   }
 }
-
+/* getStaticPaths é obrigatória quando se trata
+de trabalhar com páginas/rotas dinâmicas, ou seja, que
+dependem de parâmetros para serem construídas. */
 export async function getStaticPaths() {
   return {
+    /* Paths fica vazio pois todos os caminhos devem ser 
+    gerados sob demanda, ou seja, no momento em que a 
+    página for aberta.*/
     paths: [],
+
+    /* fallback fica como "blocking" para garantir que
+    a página somente será renderizada após a conclusão
+    da geração dos caminhos e dos dados estáticos. */
     fallback: "blocking",
   };
 }
