@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styled from "styled-components";
 import ListaPosts from "@/components/ListaPosts";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import serverApi from "./api/server";
 
 export async function getStaticProps() {
@@ -34,19 +34,22 @@ export async function getStaticProps() {
 }
 
 export default function Home({ posts, categorias }) {
-  const [categoriaSelecionada, setCategoriaSelecionada] = useState(null);
   const [listaDePosts, setListaDePosts] = useState(posts);
+  const [filtroAtivo, setFiltroAtivo] = useState(false);
 
-  useEffect(() => {
-    if (categoriaSelecionada) {
-      const postsFiltrados = posts.filter(
-        (post) => post.categoria === categoriaSelecionada
-      );
-      setListaDePosts(postsFiltrados);
-    } else {
-      setListaDePosts(posts);
-    }
-  }, [categoriaSelecionada, posts]);
+  const filtrar = (event) => {
+    /* Atenção: utilize textContent em vez de innerText
+    pois textContent captura o texto real do HTML/JSX sem 
+    levar em consideração estilos CSS. */
+    const categoriaEscolhida = event.currentTarget.textContent;
+    console.log(categoriaEscolhida);
+
+    const novaListaDePosts = posts.filter(
+      (post) => post.categoria === categoriaEscolhida
+    );
+
+    setListaDePosts(novaListaDePosts);
+  };
 
   return (
     <>
@@ -61,46 +64,58 @@ export default function Home({ posts, categorias }) {
       <StyledHome>
         <h2>Pet Notícias</h2>
 
-        <div>
-          {categorias.map((categoria, indice) => (
-            <CategoriaButton
-              key={indice}
-              selected={categoria === categoriaSelecionada}
-              onClick={() => setCategoriaSelecionada(categoria)}
-            >
-              {categoria}
-            </CategoriaButton>
-          ))}
-        </div>
+        <StyledCategorias>
+          {categorias.map((categoria, indice) => {
+            return (
+              <button onClick={filtrar} key={indice}>
+                {categoria}
+              </button>
+            );
+          })}
+          {filtroAtivo && <button className="limpar">Limpar filtro</button>}
+        </StyledCategorias>
+
         <ListaPosts posts={listaDePosts} />
       </StyledHome>
     </>
   );
 }
 
+const StyledCategorias = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+
+  button {
+    text-transform: capitalize;
+    border: none;
+    background-color: var(--cor-secundaria-fundo);
+    color: #f7f7f7;
+    padding: 0.5rem;
+    border-radius: var(--borda-arredondada);
+
+    &:hover,
+    &:focus {
+      background-color: var(--cor-secundaria-fundo-hover);
+      cursor: pointer;
+    }
+  }
+`;
+
 const StyledHome = styled.section`
   h2::before {
     content: "📰 ";
   }
 
-  div {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-`;
-
-const CategoriaButton = styled.button`
-  background-color: ${(props) => (props.selected ? "#001f3f" : "#3498db")};
-  color: #fff;
-  padding: 10px 20px;
-  margin: 4px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: ${(props) => (props.selected ? "#001a35" : "#2980b9")};
+  .limpar {
+    background-color: gray;
+    &:hover {
+      background-color: red;
+    }
+    &::before {
+      content: "🧹";
+    }
   }
 `;
