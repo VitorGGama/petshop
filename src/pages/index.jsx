@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styled from "styled-components";
 import ListaPosts from "@/components/ListaPosts";
-import { useState, useEffect } from "react";
+import { useState } from "react"; // Removi 'useEffect' pois não estava sendo usado
 import serverApi from "./api/server";
 
 export async function getStaticProps() {
@@ -34,19 +34,18 @@ export async function getStaticProps() {
 }
 
 export default function Home({ posts, categorias }) {
-  const [categoriaSelecionada, setCategoriaSelecionada] = useState(null);
   const [listaDePosts, setListaDePosts] = useState(posts);
+  const [categoriaSelecionada, setCategoriaSelecionada] = useState(null);
 
-  useEffect(() => {
-    if (categoriaSelecionada) {
-      const postsFiltrados = posts.filter(
-        (post) => post.categoria === categoriaSelecionada
-      );
-      setListaDePosts(postsFiltrados);
-    } else {
-      setListaDePosts(posts);
-    }
-  }, [categoriaSelecionada, posts]);
+  const filtrar = (event) => {
+    const categoriaEscolhida = event.currentTarget.textContent;
+
+    const novaListaDePosts = posts.filter(
+      (post) => post.categoria === categoriaEscolhida
+    );
+    setListaDePosts(novaListaDePosts);
+    setCategoriaSelecionada(categoriaEscolhida);
+  };
 
   return (
     <>
@@ -63,13 +62,24 @@ export default function Home({ posts, categorias }) {
 
         <div>
           {categorias.map((categoria, indice) => (
-            <CategoriaButton
+            <button
               key={indice}
-              selected={categoria === categoriaSelecionada}
-              onClick={() => setCategoriaSelecionada(categoria)}
+              onClick={filtrar}
+              style={{
+                backgroundColor:
+                  categoria === categoriaSelecionada
+                    ? "var(--cor-secundaria-fundo-hover)"
+                    : "blue",
+                color: "#fff",
+                padding: "0.5rem",
+                margin: "4px",
+                border: "none",
+                borderRadius: "4px",
+                cursor: "pointer",
+              }}
             >
               {categoria}
-            </CategoriaButton>
+            </button>
           ))}
         </div>
         <ListaPosts posts={listaDePosts} />
@@ -85,22 +95,25 @@ const StyledHome = styled.section`
 
   div {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     margin-top: 20px;
+    flex-wrap: wrap;
   }
-`;
 
-const CategoriaButton = styled.button`
-  background-color: ${(props) => (props.selected ? "#001f3f" : "#3498db")};
-  color: #fff;
-  padding: 10px 20px;
-  margin: 4px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  button {
+    text-transform: capitalize;
+    background-color: blue;
+    color: #fff;
+    padding: 0.5rem;
+    margin: 4px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 
-  &:hover {
-    background-color: ${(props) => (props.selected ? "#001a35" : "#2980b9")};
+    &:hover,
+    &:focus {
+      background-color: var(--cor-secundaria-fundo-hover);
+      cursor: pointer;
+    }
   }
 `;
