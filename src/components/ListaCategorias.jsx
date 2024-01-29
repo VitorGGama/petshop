@@ -6,11 +6,16 @@ const ListaCategorias = ({
   filtrar,
   limparFiltro,
   filtroAtivo,
+  categoriaAtiva,
 }) => {
   return (
     <StyledCategorias>
       {categorias.map((categoria, indice) => (
-        <button onClick={filtrar} key={indice}>
+        <button
+          className={categoria === categoriaAtiva ? "ativo" : ""}
+          onClick={filtrar}
+          key={indice}
+        >
           {categoria}
         </button>
       ))}
