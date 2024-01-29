@@ -13,10 +13,7 @@ export async function getStaticProps() {
       throw new Error(`Erro: ${resposta.status} - ${resposta.statusText}`);
     }
 
-    /* Extraindo as categorias dos posts para um novo array */
     const categorias = dados.map((post) => post.categoria);
-
-    /* Gerando um array de categorias ÚNICAS */
     const categoriasUnicas = [...new Set(categorias)];
 
     return {
@@ -38,9 +35,6 @@ export default function Home({ posts, categorias }) {
   const [filtroAtivo, setFiltroAtivo] = useState(false);
 
   const filtrar = (event) => {
-    /* Atenção: utilize textContent em vez de innerText
-    pois textContent captura o texto real do HTML/JSX sem 
-    levar em consideração estilos CSS. */
     const categoriaEscolhida = event.currentTarget.textContent;
     console.log(categoriaEscolhida);
 
@@ -48,7 +42,13 @@ export default function Home({ posts, categorias }) {
       (post) => post.categoria === categoriaEscolhida
     );
 
+    setFiltroAtivo(true);
     setListaDePosts(novaListaDePosts);
+  };
+
+  const limparFiltro = () => {
+    setFiltroAtivo(false);
+    setListaDePosts(posts);
   };
 
   return (
@@ -72,6 +72,7 @@ export default function Home({ posts, categorias }) {
               </button>
             );
           })}
+
           {filtroAtivo && <button className="limpar">Limpar filtro</button>}
         </StyledCategorias>
 
@@ -102,20 +103,20 @@ const StyledCategorias = styled.div`
       cursor: pointer;
     }
   }
+
+  .limpar {
+    background-color: gray;
+    &:hover {
+      background-color: slategray;
+    }
+    &::before {
+      content: "🧹 ";
+    }
+  }
 `;
 
 const StyledHome = styled.section`
   h2::before {
     content: "📰 ";
-  }
-
-  .limpar {
-    background-color: gray;
-    &:hover {
-      background-color: red;
-    }
-    &::before {
-      content: "🧹";
-    }
   }
 `;
