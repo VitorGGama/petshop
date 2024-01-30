@@ -6,9 +6,11 @@ import { useForm } from "react-hook-form";
 export default function Contato() {
   const { register, handleSubmit } = useForm();
 
-  const eniarContato = () => {
-    console.log("Enviando dados...");
+  const enviarContato = (dados) => {
+    console.log("Enviando dados...", dados);
+    // Adicione aqui o código para enviar os dados, por exemplo, uma chamada à API.
   };
+
   return (
     <>
       <Head>
@@ -19,7 +21,13 @@ export default function Contato() {
         <h2>Fale conosco</h2>
 
         <Container>
-          <form action="" method="">
+          <form
+            action=""
+            method="post"
+            onSubmit={handleSubmit((dados) => {
+              enviarContato(dados);
+            })}
+          >
             <div>
               <label htmlFor="nome">Nome</label>
               <input {...register("nome")} type="text" name="nome" id="nome" />
@@ -45,7 +53,7 @@ export default function Contato() {
               ></textarea>
             </div>
             <div>
-              <button type="Submit">Enviar mensagem</button>
+              <button type="submit">Enviar mensagem</button>
             </div>
           </form>
         </Container>
@@ -53,6 +61,7 @@ export default function Contato() {
     </>
   );
 }
+
 const StyledContato = styled.section`
   h2::before {
     content: "💌";
