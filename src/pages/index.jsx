@@ -7,12 +7,13 @@ import serverApi from "./api/server";
 
 export async function getStaticProps() {
   try {
-    const resposta = await fetch(`${serverApi}/posts`);
+    const resposta = await fetch(`${serverApi}/posts.json`);
     if (!resposta.ok) {
       throw new Error(`Erro: ${resposta.status} - ${resposta.statusText}`);
     }
 
     const dados = await resposta.json();
+    console.log(dados);
     const categorias = dados.map((post) => post.categoria);
     const categoriasUnicas = [...new Set(categorias)];
 
