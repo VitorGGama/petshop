@@ -1,28 +1,30 @@
 # PetShop: projeto Next.js
 
-## https://petshop-vitor-2024-default-rtdb.firebaseio.com/
+## Branch 19-migração-api-fake-para-firebase-json
 
-### Firebase
+### Firebase: https://firebase.google.com/
 
-Firebase é uma plataforma de serviços web (Web Services) com uma área de funcionalidades
-de back end úteis para aplicações (web, apps, jogos).
+Firebase é uma plataforma de serviços web (Web Services) com uma série de funcionalidades de Back-End úteis para aplicações (web, apps, jogos).
 
-No caso do PetShop, criamos um projeto Firebase e nele adicionamos um banco de dados
-chamado **Firebase RealTime Database** para utização como API Json.
+No caso do PetShop, criamos um projeto Firebase e nele adicionamos um banco de dados chamado **Firebase RealTime Database** para utilização como API JSON.
 
-O RealTime Database é um banco de dados `NoSQL`, ou seja, um banco de dados
-**não-relacional**. Ele é baseado em documentos no formato JSON contendo objetos de dados.
+O RealTime Database é um banco de dados `NoSQL`, ou seja, um banco de dados **não-relacional**. Ele é baseado em documentos no formato JSON contendo objetos de dados.
 
 ### Lembrete sobre uso de APIs
 
-Como de trata de API Json, podemos utilizar qualquer um dos verbos HTTP para consumos
-de APIS no padrão REST:
+Como se trata de uma API JSON, podemos utilizar qualquer um dos verbos HTTP para consumo de APIs no padrão REST:
 
 - GET: ler, obter dados
 - POST: criar, inserir
 - PUT: atualizar tudo
 - PATCH: atualizar parcialmente
 - DELETE: excluir
+
+### Ajustes necessários para a aplicação usar a API Firebase JSON
+
+- Em `index.jsx`, alterar a `getStaticProps` ajustando o endpoint para `/posts.json` e gerando um novo array com os posts/objetos carregados a partir da `const dados`.
+
+- Em `[id].jsx`, alterar a `getStaticProps` ajustando o endpoint para `/posts/${id}.json`.
 
 ## Branch 14-usando-rotas-dinâmicas-para-abrir-post
 
