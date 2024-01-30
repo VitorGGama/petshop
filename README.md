@@ -2,6 +2,28 @@
 
 ## https://petshop-vitor-2024-default-rtdb.firebaseio.com/
 
+### Firebase
+
+Firebase é uma plataforma de serviços web (Web Services) com uma área de funcionalidades
+de back end úteis para aplicações (web, apps, jogos).
+
+No caso do PetShop, criamos um projeto Firebase e nele adicionamos um banco de dados
+chamado **Firebase RealTime Database** para utização como API Json.
+
+O RealTime Database é um banco de dados `NoSQL`, ou seja, um banco de dados
+**não-relacional**. Ele é baseado em documentos no formato JSON contendo objetos de dados.
+
+### Lembrete sobre uso de APIs
+
+Como de trata de API Json, podemos utilizar qualquer um dos verbos HTTP para consumos
+de APIS no padrão REST:
+
+- GET: ler, obter dados
+- POST: criar, inserir
+- PUT: atualizar tudo
+- PATCH: atualizar parcialmente
+- DELETE: excluir
+
 ## Branch 14-usando-rotas-dinâmicas-para-abrir-post
 
 ### Recursos necessários
