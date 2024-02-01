@@ -1,5 +1,12 @@
 # PetShop: projeto Next.js
 
+## Branch 21 - transformando o app next em pwa
+
+**PWS** significa **Progressive Web Apllication** (Aplicativo WEB progressivo). Trata-se
+de uma abordagem para desenvolvimento de aplicativos web que visa combinar caracteristicas de sites
+e aplicativos móveis. As PWAs são construidas com tecnologias web tradicionais (HTML5, CSS e JAVASCRIPT)
+e oferecem uma experiência semelhante a aplicativos nativos, podendo até mesmo serem instaladas no dispositivo móvel.
+
 ## Branch 19-migração-api-fake-para-firebase-json
 
 ### Firebase: https://firebase.google.com/
